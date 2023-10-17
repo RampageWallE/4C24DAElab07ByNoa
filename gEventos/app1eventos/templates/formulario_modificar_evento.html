@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form action="{% url 'validacion' %}" method="POST"> -->
+    <h2>Crear un Evento</h2>
+        <form action="{% url 'modificar_evento' %}" method="POST">
+        {% csrf_token %}
+        <h4>Nombre</h4>
+        <input name="nombre" type="text" value="{{evento.nombre}}" placeholder="Ingrese el nombre del evento" required><br>
+        <h4>Lugar</h4>
+        <input name="lugar" type="text" value="{{evento.lugar}}" placeholder="Ingrese el lugar" required>
+        <h4>Fecha de inicio</h4>
+        <input name="fechainicio" type="datetime-local" value="{{evento.fechainicio}}" required>
+        <h4>Fecha de culminacion</h4>
+        <input name="fechafin" type="datetime-local" value="{{evento.fechafin}} " required>
+        <p></p>
+        <input type="hidden" name="real_name" value="{{evento.nombre}}">
+        <input type="submit" value="Guardar">
+    </form>
+    <p></p>
+    <form action="{% url 'homepage_admin'%}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Cancelar">
+    </form>
+</body>
+</html>

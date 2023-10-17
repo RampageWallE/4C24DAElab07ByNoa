@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'guardar_usuario' %}" method="POST">
+        {% csrf_token %}
+        <h4>Nombres</h4>
+        <input name="nombre" type="text" placeholder="Ingrese sus nombre"><br>
+        <h4>Apellidos</h4>
+        <input name="apellido" type="text" placeholder="Ingrese sus apellidos"><br>
+        <h4>Email</h4>
+        <input name="email" type="email" placeholder="Ingrese su email"><br>
+        <h4>Contraseña</h4>
+        <input name="contraseña" type="password" placeholder="********"><br>
+        <h4>DNI</h4>
+        <input name="dni" type="number" placeholder="Ingrese su DNI"><br>
+        <p></p>
+        <p></p>
+        <input type="submit" value="Enviar">
+
+    </form>
+</body>
+</html>

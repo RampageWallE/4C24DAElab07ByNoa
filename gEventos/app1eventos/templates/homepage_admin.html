@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{% url 'formulario_nuevo_evento' %}">Ingresar eventos</a>
+
+    <ul>
+        {% for evento in eventos %}
+            <li>
+                {{evento.nombre}}
+            </li>
+            <ul>
+                    {{cantidad_asistentes}}
+                   <p>Lugar del evento: {{evento.lugar}}</p>
+
+                    <p>Fecha de inicio: {{evento.fechainicio}}</p>
+
+                    <p>Fecha de culminacion: {{evento.fechafin}}</p>
+
+                    <p>Fecha de registro: {{evento.fecha_registro}}</p>
+                    <p>{{cantidad.cantidad_asistente}}</p>
+
+                    <form action="{% url 'borrar_evento' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="nombre" value="{{evento.nombre}}">
+                        <button>BORRAR</button>
+                    </form>
+
+                    <form action="{% url 'formulario_modificar_evento' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="nombre" value="{{evento.nombre}}">
+                        <button>MODIFICAR</button>
+                    </form>
+                
+                    
+                </ul>
+                {% endfor %}
+            </ul>
+        </body>
+</html>

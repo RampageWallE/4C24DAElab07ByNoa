@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- <a href="{% url 'formulario_nuevo_evento' %}">Ingresar eventos</a> -->
+    <h3>Listado de eventos: </h3>
+    <ul>
+        {% for evento in eventos %}
+            <li>
+                <strong>{{evento.nombre}}</strong>
+            </li>
+            <ul>
+                   <p>Lugar del evento: {{evento.lugar}}</p>
+
+                    <p>Fecha de inicio: {{evento.fechainicio}}</p>
+
+                    <p>Fecha de culminacion: {{evento.fechafin}}</p>
+
+                    <p>Fecha de registro: {{evento.fecha_registro}}</p>
+
+                    <form action="{% url 'formulario_evento_asistir' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="nombre" value="{{evento.nombre}}">
+                        <button>Asistire</button>
+                    </form>
+                    <p></p>
+
+                    <!-- <form action="{% url 'formulario_modificar_evento' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="nombre" value="{{evento.nombre}}">
+                        <button>MODIFICAR</button>
+                    </form> -->
+            </ul>
+        {% endfor %}
+    </ul>
+    <h3>Estas personas asistiran a algun evento: </h3>
+    <ul>
+        {% for asistencia in asistencias %}
+        <p>Evento a asistir: <strong>{{asistencia.evento.nombre}}</strong></p>
+        <p>Nombre de asistente: <strong>{{asistencia.usuario.nombre}}</strong></p><br>
+    {% endfor %}
+    </ul>
+</body>
+</html>

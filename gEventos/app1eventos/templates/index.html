@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'validacion' %}" method="POST">
+        {% csrf_token %}
+        <h4>Usuario</h4>
+        <input name="email" type="email" placeholder="Ingrese su email"><br>
+        <h4>Contraseña</h4>
+        <input name="contraseña" type="password" placeholder="******">
+        <p></p>
+        <input type="submit" value="Enviar">
+
+    </form>
+    <a href="{% url 'formulario_registro' %}">No tienes una cuenta? Registrate aqui</a>
+</body>
+</html>
